@@ -3,13 +3,15 @@ name = "Z12-rdp"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "z12_rdp_interpreter"
+path = "src/main.rs"
 
 [lib]
 name = "z12_rdp_lib"
 path = "src/_libs/libs.rs"
 
-
 [dependencies]
 regex = "1.6.0"
 lazy_static = "1.4.0"
+thiserror = "1.0.32"

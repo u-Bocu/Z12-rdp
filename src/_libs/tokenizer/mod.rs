@@ -19,10 +19,13 @@ pub struct Tokenizer {
 }
 
 impl Tokenizer {
-    pub fn new(mut text: String) -> Self {
+    pub fn new(text: String) -> Self {
+        let mut __text = text;
+        let __current_char = __text.remove(0usize);
+
         Tokenizer {
-            _text: text.clone(),
-            _current_char: text.remove(0usize),
+            _text: __text,
+            _current_char: __current_char,
         }
     }
 
@@ -81,7 +84,9 @@ impl Tokenizer {
                 _ => {}
             }
 
-            if !self.advance() & !is_a_number(self._current_char.to_string()) {
+            if !self.advance()
+                || (!is_a_number(self._current_char.to_string()) && !(self._current_char == '.'))
+            {
                 break;
             }
         }
