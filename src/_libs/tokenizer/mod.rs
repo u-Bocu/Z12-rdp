@@ -6,7 +6,7 @@
 use lazy_static::lazy_static;
 use regex::Regex;
 
-mod token;
+pub mod token;
 
 use token::{
     token_value_types::{self, Float, Int},

@@ -10,7 +10,7 @@ pub(crate) fn main() -> ! {
         let tokens = __tokenizer.create_tokens();
 
         for token in tokens {
-            println!("{}", token.repr());
+            println!("{:?}", token);
         }
 
         line.clear();

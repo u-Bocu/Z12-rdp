@@ -3,6 +3,7 @@
 #![allow(non_camel_case_types)]
 #![warn(non_snake_case)]
 
+use core::fmt;
 use std::fmt::Debug;
 
 // Allowed token types (for now):
@@ -43,14 +44,14 @@ impl<T: Debug> Token<T> {
             _value: __value,
         }
     }
+}
 
-    /**
-     * Function returning a String detailling the type of the token and the value, if any.
-     */
-    pub fn repr(&self) -> String {
-        match &self._value {
+impl<T: Debug> fmt::Debug for Token<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let str: String = match &self._value {
             Some(value) => self._type.clone() + ":" + &format!("{:?}", value).to_owned(),
             None => self._type.clone(),
-        }
+        };
+        write!(f, "{}", str)
     }
 }
