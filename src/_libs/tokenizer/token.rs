@@ -32,6 +32,8 @@ pub enum token_value_types {
 /**
  * Token structure used by the tokenizer, consisting of a type name and a generic typed value.
  */
+
+#[derive(Clone)]
 pub struct Token<T: Debug> {
     _type: String,
     _value: Option<T>,
@@ -43,6 +45,11 @@ impl<T: Debug> Token<T> {
             _type: __type,
             _value: __value,
         }
+    }
+
+    #[inline]
+    pub fn get_type(&self) -> String {
+        self._type.clone()
     }
 }
 
